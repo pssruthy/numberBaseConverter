@@ -1,6 +1,9 @@
 import React from 'react';
 import Base from './Base';
 
+const generateBases = (from, to) =>
+  Array.from(new Array(to - from + 1), (_, index) => index + from);
+
 class NumberBaseConverter extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +16,8 @@ class NumberBaseConverter extends React.Component {
   }
 
   render() {
-    const bases = [2, 3, 4, 5, 6, 7, 8, 9, 10].map((base) => (
+    const basesNo = generateBases(2, 16);
+    const bases = basesNo.map((base) => (
       <Base
         decimal={this.state.decimal}
         onChange={this.handleChange}
